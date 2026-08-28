@@ -1,3 +1,4 @@
+import Window from '../window/Window'
 
 const apps = [
   { id: "cheese-vault", name: "Cheese Vault", icon: "🧀" },
@@ -15,6 +16,10 @@ function Desktop({ openWindows, setOpenWindows }) {
     }
   }
 
+  function handleClose(appId) {
+    setOpenWindows((prev) => prev.filter((id) => id !== appId))
+  }
+
   return (
     <div className="bg-indigo-950 text-amber-400 font-mono min-h-screen p-4">
       <div className="flex flex-wrap gap-6">
@@ -30,9 +35,14 @@ function Desktop({ openWindows, setOpenWindows }) {
         ))}
       </div>
 
-      <div className="mt-8 text-sm">
-        Open windows: {openWindows.join(", ") || "none"}
-      </div>
+      {openWindows.map((appId) => {
+        const app = apps.find((a) => a.id === appId)
+        return (
+          <Window key={appId} title={app.name} onClose={() => handleClose(appId)}>
+            This is the {app.name} window. Content coming soon.
+          </Window>
+        )
+      })}
     </div>
   )
 }
