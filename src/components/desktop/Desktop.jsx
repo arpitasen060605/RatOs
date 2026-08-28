@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Window from '../window/Window'
+import CheeseVault from '../apps/CheeseVault'
 
 const apps = [
   { id: "cheese-vault", name: "Cheese Vault", icon: "🧀" },
@@ -54,15 +55,19 @@ function Desktop({ openWindows, setOpenWindows }) {
         const app = apps.find((a) => a.id === win.id)
         return (
           <Window
-            key={win.id}
-            title={app.name}
-            onClose={() => handleClose(win.id)}
-            onFocus={() => handleFocus(win.id)}
-            offset={win.offset}
-            zIndex={win.zIndex}
-          >
-            This is the {app.name} window. Content coming soon.
-          </Window>
+  key={win.id}
+  title={app.name}
+  onClose={() => handleClose(win.id)}
+  onFocus={() => handleFocus(win.id)}
+  offset={win.offset}
+  zIndex={win.zIndex}
+>
+  {win.id === "cheese-vault" ? (
+    <CheeseVault />
+  ) : (
+    `This is the ${app.name} window. Content coming soon.`
+  )}
+</Window>
         )
       })}
     </div>

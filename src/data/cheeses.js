@@ -1,0 +1,58 @@
+const cheeses = [
+  {
+    id: "moon-cheese",
+    name: "Moon Cheese",
+    rarity: 5,
+    origin: "Unknown",
+    foundAt: "Behind the refrigerator",
+    description: "Do not consume. Glows faintly at night.",
+    collected: false,
+  },
+  {
+    id: "cheddar-classic",
+    name: "Classic Cheddar",
+    rarity: 1,
+    origin: "The Kitchen",
+    foundAt: "Kitchen counter",
+    description: "A reliable, unremarkable cheese. Every rat's first find.",
+    collected: false,
+  },
+  {
+    id: "gouda-royale",
+    name: "Gouda Royale",
+    rarity: 3,
+    origin: "The Human's Fridge",
+    foundAt: "Top shelf, hidden behind yogurt",
+    description: "Smells expensive. Probably is.",
+    collected: false,
+  },
+  {
+    id: "cursed-brie",
+    name: "Cursed Brie",
+    rarity: 4,
+    origin: "The Basement",
+    foundAt: "An unmarked crate",
+    description: "Whoever eats this speaks only in riddles for one hour.",
+    collected: false,
+  },
+  {
+    id: "stale-string-cheese",
+    name: "Stale String Cheese",
+    rarity: 1,
+    origin: "A Child's Lunchbox",
+    foundAt: "Under the couch cushions",
+    description: "It's seen better days. So have we all.",
+    collected: false,
+  },
+  {
+    id: "parmesan-of-legends",
+    name: "Parmesan of Legends",
+    rarity: 5,
+    origin: "Rumor Only",
+    foundAt: "No rat has confirmed its existence",
+    description: "The Council denies this cheese is real.",
+    collected: false,
+  },
+]
+
+export default cheeses
