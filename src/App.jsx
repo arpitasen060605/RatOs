@@ -13,6 +13,7 @@ const bootLines = [
 function App() {
   const [booted, setBooted] = useState(false)
   const [visibleLines, setVisibleLines] = useState([])
+  const [openWindows, setOpenWindows] = useState([])
 
   useEffect(() => {
     bootLines.forEach((line, index) => {
@@ -31,7 +32,7 @@ function App() {
   return (
     <div className="bg-black text-amber-400 text-xl font-mono min-h-screen">
       {booted ? (
-        <Desktop />
+        <Desktop openWindows={openWindows} setOpenWindows={setOpenWindows} />
       ) : (
         <div className="p-8">
           {visibleLines.map((line, index) => (
