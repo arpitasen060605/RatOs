@@ -1,4 +1,6 @@
+
 import { useState, useEffect } from 'react'
+import Desktop from './components/desktop/Desktop'
 
 const bootLines = [
   "RATOS BIOS v1.3",
@@ -27,11 +29,11 @@ function App() {
   }, [])
 
   return (
-    <div className="bg-black text-amber-400 text-xl font-mono p-8 min-h-screen">
+    <div className="bg-black text-amber-400 text-xl font-mono min-h-screen">
       {booted ? (
-        <div>Welcome to the Desktop (coming soon)</div>
+        <Desktop />
       ) : (
-        <div>
+        <div className="p-8">
           {visibleLines.map((line, index) => (
             <div key={index}>{line}</div>
           ))}
