@@ -35,14 +35,19 @@ function Desktop({ openWindows, setOpenWindows }) {
         ))}
       </div>
 
-      {openWindows.map((appId) => {
-        const app = apps.find((a) => a.id === appId)
-        return (
-          <Window key={appId} title={app.name} onClose={() => handleClose(appId)}>
-            This is the {app.name} window. Content coming soon.
-          </Window>
-        )
-      })}
+      {openWindows.map((appId, index) => {
+  const app = apps.find((a) => a.id === appId)
+  return (
+    <Window
+      key={appId}
+      title={app.name}
+      onClose={() => handleClose(appId)}
+      offset={index}
+    >
+      This is the {app.name} window. Content coming soon.
+    </Window>
+  )
+})}
     </div>
   )
 }

@@ -1,6 +1,13 @@
-function Window({ title, onClose, children }) {
+
+function Window({ title, onClose, children, offset = 0 }) {
+  const top = 80 + offset * 30
+  const left = 80 + offset * 30
+
   return (
-    <div className="absolute top-20 left-20 w-80 bg-stone-200 text-black rounded-md shadow-xl border-2 border-stone-400">
+    <div
+      className="absolute w-80 bg-stone-200 text-black rounded-md shadow-xl border-2 border-stone-400"
+      style={{ top: `${top}px`, left: `${left}px` }}
+    >
       <div className="bg-indigo-900 text-amber-300 flex justify-between items-center px-3 py-1 rounded-t-sm">
         <span className="font-mono text-sm">{title}</span>
         <button
