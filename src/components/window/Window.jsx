@@ -1,6 +1,6 @@
 import { motion, useDragControls } from 'framer-motion'
 
-function Window({ title, onClose, children, offset = 0 }) {
+function Window({ title, onClose, onFocus, children, offset = 0, zIndex = 10 }) {
   const top = 80 + offset * 30
   const left = 80 + offset * 30
   const dragControls = useDragControls()
@@ -11,8 +11,9 @@ function Window({ title, onClose, children, offset = 0 }) {
       dragListener={false}
       dragControls={dragControls}
       dragMomentum={false}
+      onMouseDown={onFocus}
       className="absolute w-80 bg-stone-200 text-black rounded-md shadow-xl border-2 border-stone-400"
-      style={{ top: `${top}px`, left: `${left}px` }}
+      style={{ top: `${top}px`, left: `${left}px`, zIndex }}
     >
       <div
         onPointerDown={(e) => dragControls.start(e)}

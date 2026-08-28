@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Window from '../window/Window'
 
 const apps = [
@@ -10,14 +11,28 @@ const apps = [
 ]
 
 function Desktop({ openWindows, setOpenWindows }) {
+  const [nextZ, setNextZ] = useState(10)
+
   function handleIconClick(appId) {
-    if (!openWindows.includes(appId)) {
-      setOpenWindows((prev) => [...prev, appId])
+    const alreadyOpen = openWindows.find((w) => w.id === appId)
+    if (!alreadyOpen) {
+      const offset = openWindows.length
+      setOpenWindows((prev) => [...prev, { id: appId, offset, zIndex: nextZ }])
+      setNextZ((z) => z + 1)
+    } else {
+      handleFocus(appId)
     }
   }
 
   function handleClose(appId) {
-    setOpenWindows((prev) => prev.filter((id) => id !== appId))
+    setOpenWindows((prev) => prev.filter((w) => w.id !== appId))
+  }
+
+  function handleFocus(appId) {
+    setOpenWindows((prev) =>
+      prev.map((w) => (w.id === appId ? { ...w, zIndex: nextZ } : w))
+    )
+    setNextZ((z) => z + 1)
   }
 
   return (
@@ -35,19 +50,21 @@ function Desktop({ openWindows, setOpenWindows }) {
         ))}
       </div>
 
-      {openWindows.map((appId, index) => {
-  const app = apps.find((a) => a.id === appId)
-  return (
-    <Window
-      key={appId}
-      title={app.name}
-      onClose={() => handleClose(appId)}
-      offset={index}
-    >
-      This is the {app.name} window. Content coming soon.
-    </Window>
-  )
-})}
+      {openWindows.map((win) => {
+        const app = apps.find((a) => a.id === win.id)
+        return (
+          <Window
+            key={win.id}
+            title={app.name}
+            onClose={() => handleClose(win.id)}
+            onFocus={() => handleFocus(win.id)}
+            offset={win.offset}
+            zIndex={win.zIndex}
+          >
+            This is the {app.name} window. Content coming soon.
+          </Window>
+        )
+      })}
     </div>
   )
 }
