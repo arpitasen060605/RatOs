@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Window from '../window/Window'
 import CheeseVault from '../apps/CheeseVault'
+import RatMail from '../apps/RatMail'
 
 const apps = [
   { id: "cheese-vault", name: "Cheese Vault", icon: "🧀" },
@@ -63,10 +64,12 @@ function Desktop({ openWindows, setOpenWindows }) {
   zIndex={win.zIndex}
 >
   {win.id === "cheese-vault" ? (
-    <CheeseVault />
-  ) : (
-    `This is the ${app.name} window. Content coming soon.`
-  )}
+  <CheeseVault />
+) : win.id === "ratmail" ? (
+  <RatMail />
+) : (
+  `This is the ${app.name} window. Content coming soon.`
+)}
 </Window>
         )
       })}
