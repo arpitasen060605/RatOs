@@ -5,6 +5,7 @@ import RatMail from '../apps/RatMail'
 import RatChat from '../apps/RatChat'
 import Burrow from '../apps/Burrow'
 import Terminal from '../apps/Terminal'
+import RatMap from '../apps/RatMap'
 
 const apps = [
   { id: "cheese-vault", name: "Cheese Vault", icon: "🧀" },
@@ -74,6 +75,8 @@ function Desktop({ openWindows, setOpenWindows }) {
   <RatChat />
 ) : win.id ==="burrow" ? (
   <Burrow />
+) : win.id === "ratmap" ? (
+  <RatMap/>
 ) : win.id === "terminal" ? (
   <Terminal />
 ) : (
