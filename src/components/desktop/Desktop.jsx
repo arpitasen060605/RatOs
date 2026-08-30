@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Window from '../window/Window'
 import CheeseVault from '../apps/CheeseVault'
 import RatMail from '../apps/RatMail'
+import RatChat from '../apps/RatChat'
 
 const apps = [
   { id: "cheese-vault", name: "Cheese Vault", icon: "🧀" },
@@ -67,6 +68,8 @@ function Desktop({ openWindows, setOpenWindows }) {
   <CheeseVault />
 ) : win.id === "ratmail" ? (
   <RatMail />
+) : win.id === "ratchat" ? (
+  <RatChat />
 ) : (
   `This is the ${app.name} window. Content coming soon.`
 )}
