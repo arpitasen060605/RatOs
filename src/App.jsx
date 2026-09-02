@@ -14,6 +14,9 @@ function App() {
   const [booted, setBooted] = useState(false)
   const [visibleLines, setVisibleLines] = useState([])
   const [openWindows, setOpenWindows] = useState([])
+  const [flags, setFlags] = useState({
+  unlockedDoNotClick: false,
+})
 
   useEffect(() => {
     bootLines.forEach((line, index) => {
@@ -32,7 +35,10 @@ function App() {
   return (
     <div className="bg-black text-amber-400 text-xl font-mono min-h-screen">
       {booted ? (
-        <Desktop openWindows={openWindows} setOpenWindows={setOpenWindows} />
+        <Desktop openWindows={openWindows}
+         setOpenWindows={setOpenWindows} 
+         flags= {flags}
+         setFlags={setFlags}/>
       ) : (
         <div className="p-8">
           {visibleLines.map((line, index) => (

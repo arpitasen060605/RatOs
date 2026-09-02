@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import filesystem from '../../data/filesystem'
 
-function Terminal() {
+function Terminal({flags, setFlags}) {
   const [path, setPath] = useState([filesystem])
   const [input, setInput] = useState("")
   const [history, setHistory] = useState([
@@ -64,6 +64,9 @@ function Terminal() {
       output = ["Permission denied.", "Reason: You are not sneaky enough."]
     } else if (command === "sudo" && args[0] === "steal_cheese") {
       output = ["Nice try."]
+    } else if (command === "sudo" && args[0] === "open" && args[1] === "DO_NOT_CLICK.exe") {
+      setFlags((prev) => ({ ...prev, unlockedDoNotClick: true }))
+       output = ["Access granted.", "Something feels different now."]
     } else {
       output = [`command not found: ${command}`]
     }

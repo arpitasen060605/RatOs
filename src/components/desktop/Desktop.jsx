@@ -6,6 +6,7 @@ import RatChat from '../apps/RatChat'
 import Burrow from '../apps/Burrow'
 import Terminal from '../apps/Terminal'
 import RatMap from '../apps/RatMap'
+import DoNotClick from '../apps/DoNotClick'
 
 const apps = [
   { id: "cheese-vault", name: "Cheese Vault", icon: "🧀" },
@@ -14,9 +15,10 @@ const apps = [
   { id: "ratmap", name: "RatMap", icon: "🗺️" },
   { id: "burrow", name: "My Burrow", icon: "📁" },
   { id: "terminal", name: "Rat Terminal", icon: "💻" },
+  {id: "do-not-click", name: "DO_NOT_CLICK.exe", icon: "⚠️"}
 ]
 
-function Desktop({ openWindows, setOpenWindows }) {
+function Desktop({ openWindows, setOpenWindows, flags,setFlags }) {
   const [nextZ, setNextZ] = useState(10)
 
   function handleIconClick(appId) {
@@ -78,8 +80,10 @@ function Desktop({ openWindows, setOpenWindows }) {
 ) : win.id === "ratmap" ? (
   <RatMap/>
 ) : win.id === "terminal" ? (
-  <Terminal />
-) : (
+  <Terminal flags={flags} setFlags={setFlags} />
+) : win.id === "do-not-click"? (
+  <DoNotClick flags={flags}/>
+):(
   `This is the ${app.name} window. Content coming soon.`
 )}
 </Window>
