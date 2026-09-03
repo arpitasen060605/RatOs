@@ -16,6 +16,8 @@ function App() {
   const [openWindows, setOpenWindows] = useState([])
   const [flags, setFlags] = useState({
   unlockedDoNotClick: false,
+  cheeseCollectedCount: 0,
+  terminalCommandsUsed: 0,
 })
 
   useEffect(() => {

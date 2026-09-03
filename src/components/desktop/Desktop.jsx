@@ -7,6 +7,7 @@ import Burrow from '../apps/Burrow'
 import Terminal from '../apps/Terminal'
 import RatMap from '../apps/RatMap'
 import DoNotClick from '../apps/DoNotClick'
+import Achievements from '../apps/Achievements'
 
 const apps = [
   { id: "cheese-vault", name: "Cheese Vault", icon: "🧀" },
@@ -15,7 +16,8 @@ const apps = [
   { id: "ratmap", name: "RatMap", icon: "🗺️" },
   { id: "burrow", name: "My Burrow", icon: "📁" },
   { id: "terminal", name: "Rat Terminal", icon: "💻" },
-  {id: "do-not-click", name: "DO_NOT_CLICK.exe", icon: "⚠️"}
+  { id: "do-not-click", name: "DO_NOT_CLICK.exe", icon: "⚠️"},
+  { id: "achievements", name: "Achievements", icon: "🏆"}, 
 ]
 
 function Desktop({ openWindows, setOpenWindows, flags,setFlags }) {
@@ -53,7 +55,7 @@ function Desktop({ openWindows, setOpenWindows, flags,setFlags }) {
             className="flex flex-col items-center w-20 cursor-pointer hover:opacity-75"
           >
             <div className="text-4xl">{app.icon}</div>
-            <div className="text-sm text-center">{app.name}</div>
+            <div className="text-sm text-center w-full break-words">{app.name}</div>
           </div>
         ))}
       </div>
@@ -70,7 +72,7 @@ function Desktop({ openWindows, setOpenWindows, flags,setFlags }) {
   zIndex={win.zIndex}
 >
   {win.id === "cheese-vault" ? (
-  <CheeseVault />
+  <CheeseVault flags={flags} setFlags={setFlags} />
 ) : win.id === "ratmail" ? (
   <RatMail />
 ) : win.id === "ratchat" ? (
@@ -83,6 +85,8 @@ function Desktop({ openWindows, setOpenWindows, flags,setFlags }) {
   <Terminal flags={flags} setFlags={setFlags} />
 ) : win.id === "do-not-click"? (
   <DoNotClick flags={flags}/>
+): win.id === "achievements" ?(
+  <Achievements flags={flags}/>
 ):(
   `This is the ${app.name} window. Content coming soon.`
 )}

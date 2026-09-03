@@ -70,7 +70,7 @@ function Terminal({flags, setFlags}) {
     } else {
       output = [`command not found: ${command}`]
     }
-
+    setFlags((prev) => ({ ...prev, terminalCommandsUsed: prev.terminalCommandsUsed + 1 }))
     setHistory((prev) => [
       ...prev,
       { type: "command", text: rawInput },

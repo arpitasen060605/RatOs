@@ -9,15 +9,18 @@ const rarityColors = {
   5: "text-amber-600",
 }
 
-function CheeseVault() {
+function CheeseVault({ flags, setFlags }) {
   const [collection, setCollection] = useState(cheeses)
 
   function toggleCollected(id) {
-    setCollection((prev) =>
-      prev.map((cheese) =>
+    setCollection((prev) => {
+      const updated = prev.map((cheese) =>
         cheese.id === id ? { ...cheese, collected: !cheese.collected } : cheese
       )
-    )
+      const newCount = updated.filter((c) => c.collected).length
+      setFlags((f) => ({ ...f, cheeseCollectedCount: newCount }))
+      return updated
+    })
   }
 
   return (
