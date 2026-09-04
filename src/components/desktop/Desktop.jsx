@@ -8,6 +8,7 @@ import Terminal from '../apps/Terminal'
 import RatMap from '../apps/RatMap'
 import DoNotClick from '../apps/DoNotClick'
 import Achievements from '../apps/Achievements'
+import CheeseCatcher from '../games/CheeseCatcher'
 
 const apps = [
   { id: "cheese-vault", name: "Cheese Vault", icon: "🧀" },
@@ -18,6 +19,7 @@ const apps = [
   { id: "terminal", name: "Rat Terminal", icon: "💻" },
   { id: "do-not-click", name: "DO_NOT_CLICK.exe", icon: "⚠️"},
   { id: "achievements", name: "Achievements", icon: "🏆"}, 
+  { id: "ratgames", name: "RatGames", icon: "🎮"},
 ]
 
 function Desktop({ openWindows, setOpenWindows, flags,setFlags }) {
@@ -87,7 +89,9 @@ function Desktop({ openWindows, setOpenWindows, flags,setFlags }) {
   <DoNotClick flags={flags}/>
 ): win.id === "achievements" ?(
   <Achievements flags={flags}/>
-):(
+): win.id === "ratgames" ? (
+  <CheeseCatcher/>
+):(  
   `This is the ${app.name} window. Content coming soon.`
 )}
 </Window>
