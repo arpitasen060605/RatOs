@@ -9,6 +9,7 @@ import RatMap from '../apps/RatMap'
 import DoNotClick from '../apps/DoNotClick'
 import Achievements from '../apps/Achievements'
 import CheeseCatcher from '../games/CheeseCatcher'
+import ratMascot from '../../assets/rat-mascot.png'
 
 const apps = [
   { id: "cheese-vault", name: "Cheese Vault", icon: "🧀" },
@@ -48,8 +49,8 @@ function Desktop({ openWindows, setOpenWindows, flags,setFlags }) {
   }
 
   return (
-    <div className="bg-indigo-950 text-amber-400 font-mono min-h-screen p-4">
-      <div className="flex flex-wrap gap-6">
+    <div className="bg-ratos-bg text-ratos-cream font-terminal min-h-screen p-4">
+      <div className="flex flex-col flex-wrap gap-6 h-[calc(100vh-2rem)] content-start">
         {apps.map((app) => (
           <div
             key={app.id}
@@ -57,7 +58,7 @@ function Desktop({ openWindows, setOpenWindows, flags,setFlags }) {
             className="flex flex-col items-center w-20 cursor-pointer hover:opacity-75"
           >
             <div className="text-4xl">{app.icon}</div>
-            <div className="text-sm text-center w-full break-words">{app.name}</div>
+            <div className="text-sm text-center w-full break-words font-terminal">{app.name}</div>
           </div>
         ))}
       </div>

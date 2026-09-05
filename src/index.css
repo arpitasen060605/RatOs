@@ -1,1 +1,15 @@
 @import "tailwindcss";
+
+@theme {
+  --color-ratos-bg: #1B1B2F;
+  --color-ratos-panel: #2E2E46;
+  --color-ratos-accent: #4E4E6E;
+  --color-ratos-cream: #F7E27D;
+  --color-ratos-orange: #FFB347;
+  --color-ratos-red: #FF6B6B;
+  --color-ratos-green: #8BE8A1;
+  --color-ratos-purple: #D6B3FF;
+
+  --font-pixel: "Press Start 2P", monospace;
+  --font-terminal: "VT323", monospace;
+}

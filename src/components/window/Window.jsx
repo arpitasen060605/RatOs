@@ -7,30 +7,30 @@ function Window({ title, onClose, onFocus, children, offset = 0, zIndex = 10 }) 
 
   return (
     <motion.div
-      drag
-      dragListener={false}
-      dragControls={dragControls}
-      dragMomentum={false}
-      onMouseDown={onFocus}
-      className="absolute w-80 bg-stone-200 text-black rounded-md shadow-xl border-2 border-stone-400"
-      style={{ top: `${top}px`, left: `${left}px`, zIndex }}
+  drag
+  dragListener={false}
+  dragControls={dragControls}
+  dragMomentum={false}
+  onMouseDown={onFocus}
+  className="absolute w-80 bg-ratos-cream text-ratos-bg border-4 border-ratos-accent shadow-[6px_6px_0px_0px_rgba(0,0,0,0.5)]"
+  style={{ top: `${top}px`, left: `${left}px`, zIndex }}
+>
+  <div
+    onPointerDown={(e) => dragControls.start(e)}
+    className="bg-ratos-accent text-ratos-cream flex justify-between items-center px-3 py-1 cursor-grab active:cursor-grabbing font-pixel text-xs"
+  >
+    <span>{title}</span>
+    <button
+      onClick={onClose}
+      className="bg-ratos-red text-white w-5 h-5 text-xs leading-none hover:brightness-110 border-2 border-black"
     >
-      <div
-        onPointerDown={(e) => dragControls.start(e)}
-        className="bg-indigo-900 text-amber-300 flex justify-between items-center px-3 py-1 rounded-t-sm cursor-grab active:cursor-grabbing"
-      >
-        <span className="font-mono text-sm">{title}</span>
-        <button
-          onClick={onClose}
-          className="bg-red-500 text-white w-5 h-5 rounded-sm text-xs leading-none hover:bg-red-600"
-        >
-          ✕
-        </button>
-      </div>
-      <div className="p-4 font-mono text-sm">
-        {children}
-      </div>
-    </motion.div>
+      ✕
+    </button>
+  </div>
+  <div className="p-4 font-terminal text-lg">
+    {children}
+  </div>
+</motion.div>
   )
 }
 
