@@ -9,7 +9,7 @@ import RatMap from '../apps/RatMap'
 import DoNotClick from '../apps/DoNotClick'
 import Achievements from '../apps/Achievements'
 import CheeseCatcher from '../games/CheeseCatcher'
-import ratMascot from '../../assets/rat-mascot.png'
+import { AnimatePresence } from 'framer-motion'
 
 const apps = [
   { id: "cheese-vault", name: "Cheese Vault", icon: "🧀" },
@@ -71,7 +71,7 @@ function Desktop({ openWindows, setOpenWindows, flags,setFlags }) {
           <div
             key={app.id}
             onClick={() => handleIconClick(app.id)}
-            className="flex flex-col items-center w-20 cursor-pointer hover:opacity-75"
+            className="flex flex-col items-center w-20 cursor-pointer transition-transform hover:scale-110 hover:-translate-y-1"
           >
             <div className="text-4xl">{app.icon}</div>
             <div className="text-sm text-center w-full break-words font-terminal">{app.name}</div>
@@ -79,17 +79,18 @@ function Desktop({ openWindows, setOpenWindows, flags,setFlags }) {
         ))}
       </div>
 
-      {openWindows.map((win) => {
-        const app = apps.find((a) => a.id === win.id)
-        return (
-          <Window
-  key={win.id}
-  title={app.name}
-  onClose={() => handleClose(win.id)}
-  onFocus={() => handleFocus(win.id)}
-  offset={win.offset}
-  zIndex={win.zIndex}
->
+   <AnimatePresence>
+  {openWindows.map((win) => {
+    const app = apps.find((a) => a.id === win.id)
+    return (
+      <Window
+        key={win.id}
+        title={app.name}
+        onClose={() => handleClose(win.id)}
+        onFocus={() => handleFocus(win.id)}
+        offset={win.offset}
+        zIndex={win.zIndex}
+      >
   {win.id === "cheese-vault" ? (
   <CheeseVault flags={flags} setFlags={setFlags} />
 ) : win.id === "ratmail" ? (
@@ -114,6 +115,7 @@ function Desktop({ openWindows, setOpenWindows, flags,setFlags }) {
 </Window>
         )
       })}
+      </AnimatePresence>
     </div>
   )
 }
