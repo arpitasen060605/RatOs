@@ -50,6 +50,22 @@ function Desktop({ openWindows, setOpenWindows, flags,setFlags }) {
 
   return (
     <div className="bg-ratos-bg text-ratos-cream font-terminal min-h-screen p-4">
+      <div className="fixed inset-0 overflow-hidden pointer-events-none opacity-35 text-6xl">
+      <span className="absolute top-10 left-1/4">🧀</span>
+      <span className="absolute top-1/3 right-20">🐀</span>
+      <span className="absolute bottom-20 left-16">💻</span>
+      <span className="absolute bottom-1/4 right-1/3">🧀</span>
+      <span className="absolute top-1/2 left-1/2">🐀</span>
+      <span className="absolute top-20 right-1/4">📦</span>
+      <span className="absolute top-1/4 left-10">🐀</span>
+      <span className="absolute bottom-10 right-10">🧀</span>
+      <span className="absolute top-1/2 right-1/4">📬</span>
+      <span className="absolute bottom-1/3 left-1/3">🗺️</span>
+      <span className="absolute top-2/3 left-1/4">💬</span>
+      <span className="absolute bottom-40 right-1/2">🐀</span>
+      <span className="absolute top-40 left-1/2">🧀</span>
+      <span className="absolute bottom-1/2 right-40">📦</span>
+    </div>
       <div className="flex flex-col flex-wrap gap-6 h-[calc(100vh-2rem)] content-start">
         {apps.map((app) => (
           <div
