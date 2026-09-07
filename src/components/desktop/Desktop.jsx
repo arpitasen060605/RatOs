@@ -10,6 +10,7 @@ import DoNotClick from '../apps/DoNotClick'
 import Achievements from '../apps/Achievements'
 import CheeseCatcher from '../games/CheeseCatcher'
 import { AnimatePresence } from 'framer-motion'
+import WanderingRat from './WanderingRat'
 
 const apps = [
   { id: "cheese-vault", name: "Cheese Vault", icon: "🧀" },
@@ -91,6 +92,7 @@ function Desktop({ openWindows, setOpenWindows, flags,setFlags }) {
         offset={win.offset}
         zIndex={win.zIndex}
       >
+        <WanderingRat />      
   {win.id === "cheese-vault" ? (
   <CheeseVault flags={flags} setFlags={setFlags} />
 ) : win.id === "ratmail" ? (
