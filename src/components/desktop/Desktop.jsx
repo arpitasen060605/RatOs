@@ -27,6 +27,7 @@ const apps = [
 
 function Desktop({ openWindows, setOpenWindows, flags,setFlags }) {
   const [nextZ, setNextZ] = useState(10)
+  const [startMenuOpen, setStartMenuOpen] = useState(false)
 
   function handleIconClick(appId) {
     const alreadyOpen = openWindows.find((w) => w.id === appId)
@@ -52,6 +53,11 @@ function Desktop({ openWindows, setOpenWindows, flags,setFlags }) {
 
   function handleTaskbarClick(appId) {
   handleFocus(appId)
+}
+
+function handleStartMenuAppClick(appId) {
+  handleIconClick(appId)
+  setStartMenuOpen(false)
 }
 
   return (
@@ -88,6 +94,9 @@ function Desktop({ openWindows, setOpenWindows, flags,setFlags }) {
   openWindows= {openWindows}
   apps={apps}
   onTaskbarClick= {handleTaskbarClick}
+  startMenuOpen={startMenuOpen}
+  setStartMenuOpen={setStartMenuOpen}
+  onStartMenuAppClick={handleStartMenuAppClick}
 />
 
    <AnimatePresence>
