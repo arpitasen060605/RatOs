@@ -11,6 +11,7 @@ import Achievements from '../apps/Achievements'
 import CheeseCatcher from '../games/CheeseCatcher'
 import { AnimatePresence } from 'framer-motion'
 import WanderingRat from './WanderingRat'
+import Taskbar from './Taskbar'
 
 const apps = [
   { id: "cheese-vault", name: "Cheese Vault", icon: "🧀" },
@@ -49,8 +50,12 @@ function Desktop({ openWindows, setOpenWindows, flags,setFlags }) {
     setNextZ((z) => z + 1)
   }
 
+  function handleTaskbarClick(appId) {
+  handleFocus(appId)
+}
+
   return (
-    <div className="bg-ratos-bg text-ratos-cream font-terminal min-h-screen p-4">
+    <div className="bg-ratos-bg text-ratos-cream font-terminal min-h-screen p-4 pb-16 relative">
       <div className="fixed inset-0 overflow-hidden pointer-events-none opacity-35 text-6xl">
       <span className="absolute top-10 left-1/4">🧀</span>
       <span className="absolute top-1/3 right-20">🐀</span>
@@ -79,6 +84,11 @@ function Desktop({ openWindows, setOpenWindows, flags,setFlags }) {
           </div>
         ))}
       </div>
+      <Taskbar
+  openWindows= {openWindows}
+  apps={apps}
+  onTaskbarClick= {handleTaskbarClick}
+/>
 
    <AnimatePresence>
   {openWindows.map((win) => {
@@ -119,6 +129,7 @@ function Desktop({ openWindows, setOpenWindows, flags,setFlags }) {
       })}
       </AnimatePresence>
     </div>
+    
   )
 }
 
