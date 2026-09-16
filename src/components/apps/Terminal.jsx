@@ -66,8 +66,11 @@ function Terminal({flags, setFlags}) {
       output = ["Nice try."]
     } else if (command === "sudo" && args[0] === "open" && args[1] === "DO_NOT_CLICK.exe") {
       setFlags((prev) => ({ ...prev, unlockedDoNotClick: true }))
-       output = ["Access granted.", "Something feels different now."]
-    } else {
+      output = ["Access granted.", "Something feels different now."]
+    } else if (command === "i_know_about_the_tunnels") {
+      setFlags((prev) => ({ ...prev, unlockedTunnels: true }))
+      output = ["The tunnels shift. Something has changed."]
+    }else {
       output = [`command not found: ${command}`]
     }
     setFlags((prev) => ({ ...prev, terminalCommandsUsed: prev.terminalCommandsUsed + 1 }))
@@ -100,18 +103,18 @@ function Terminal({flags, setFlags}) {
   </div>
 ))}
       </div>
-      <div className="flex">
-        <span>
-          rat@burrow:~{path.map((p) => p.name).join("/")}${" "}
-        </span>
-        <input
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={handleKeyDown}
-          className="bg-transparent outline-none flex-1 ml-1"
-          autoFocus
-        />
-      </div>
+      <div className="flex flex-wrap items-center">
+  <span className="whitespace-nowrap">
+    rat@burrow:~{path.map((p) => p.name).join("/")}${" "}
+  </span>
+  <input
+    value={input}
+    onChange={(e) => setInput(e.target.value)}
+    onKeyDown={handleKeyDown}
+    className="bg-transparent outline-none flex-1 min-w-0 ml-1"
+    autoFocus
+  />
+</div>
     </div>
   )
 }

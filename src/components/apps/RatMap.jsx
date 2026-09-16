@@ -1,15 +1,27 @@
 import { useState } from 'react'
 import rooms from '../../data/rooms'
 
-function RatMap() {
+function RatMap({ flags }) {
   const [selectedId, setSelectedId] = useState(null)
 
-  const selectedRoom = rooms.find((room) => room.id === selectedId)
+  const displayRooms = rooms.map((room) =>
+    room.id === "tunnels"
+      ? {
+          ...room,
+          locked: !flags.unlockedTunnels,
+          description: flags.unlockedTunnels
+            ? "The tunnels stretch further than anyone thought. Something built this."
+            : room.description,
+        }
+      : room
+  )
+
+  const selectedRoom = displayRooms.find((room) => room.id === selectedId)
 
   return (
     <div className="h-80 flex flex-col">
       <div className="grid grid-cols-3 gap-2 p-2">
-        {rooms.map((room) => (
+        {displayRooms.map((room) => (
           <div
             key={room.id}
             onClick={() => !room.locked && setSelectedId(room.id)}

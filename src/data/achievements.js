@@ -23,6 +23,12 @@ const achievements = [
     description: "Use 5 terminal commands.",
     check: (flags) => flags.terminalCommandsUsed >= 5,
   },
+  {
+    id: "tunnel-rat",
+    name: "Tunnel Rat",
+    description: "Discover the Underground Tunnels.",
+    check: (flags) => flags.unlockedTunnels,
+  }
 ]
 
 export default achievements

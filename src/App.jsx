@@ -16,9 +16,12 @@ function App() {
   const [openWindows, setOpenWindows] = useState([])
   const [flags, setFlags] = useState({
     unlockedDoNotClick: false,
+    unlockedTunnels: false,
     cheeseCollectedCount: 0,
     terminalCommandsUsed: 0,
   })
+
+  
 
   useEffect(() => {
     if (stage !== "booting") return

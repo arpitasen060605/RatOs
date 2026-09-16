@@ -15,6 +15,7 @@ const filesystem = {
       children: [
         { name: "plan.txt", type: "file", content: "The humans still don't know about the tunnel beneath the kitchen." },
         { name: "do_not_open.txt", type: "file", content: "You weren't supposed to find this." },
+        { name: "tunnel_access.txt", type: "file", content: "Only those who type 'i_know_about_the_tunnels in the terminal may enter."},
       ],
     },
     {

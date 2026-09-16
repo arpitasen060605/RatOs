@@ -121,7 +121,7 @@ function handleStartMenuAppClick(appId) {
 ) : win.id ==="burrow" ? (
   <Burrow />
 ) : win.id === "ratmap" ? (
-  <RatMap/>
+  <RatMap flags={flags}/>
 ) : win.id === "terminal" ? (
   <Terminal flags={flags} setFlags={setFlags} />
 ) : win.id === "do-not-click"? (
