@@ -13,6 +13,7 @@ import { AnimatePresence } from 'framer-motion'
 import WanderingRat from './WanderingRat'
 import Taskbar from './Taskbar'
 import AvoidTheCat from '../games/AvoidTheCat'
+import { playClickSound, playOpenSound, playCloseSound} from '../../lib/sounds'
 
 const apps = [
   { id: "cheese-vault", name: "Cheese Vault", icon: "🧀" },
@@ -60,6 +61,23 @@ function Desktop({ openWindows, setOpenWindows, flags,setFlags }) {
 function handleStartMenuAppClick(appId) {
   handleIconClick(appId)
   setStartMenuOpen(false)
+}
+
+function handleIconClick(appId) {
+  const alreadyOpen = openWindows.find((w) => w.id === appId)
+  if (!alreadyOpen) {
+    playOpenSound()
+    const offset = openWindows.length
+    setOpenWindows((prev) => [...prev, { id: appId, offset, zIndex: nextZ }])
+    setNextZ((z) => z + 1)
+  } else {
+    handleFocus(appId)
+  }
+}
+
+function handleClose(appId) {
+  playCloseSound()
+  setOpenWindows((prev) => prev.filter((w) => w.id !== appId))
 }
 
   return (
