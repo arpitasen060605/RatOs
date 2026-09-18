@@ -13,3 +13,25 @@
   --font-pixel: "Press Start 2P", monospace;
   --font-terminal: "VT323", monospace;
 }
+
+.crt-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0px,
+    rgba(0, 0, 0, 0) 2px,
+    rgba(0, 0, 0, 0.15) 3px
+  );
+  animation: flicker 6s infinite;
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.96; }
+  52% { opacity: 1; }
+  53% { opacity: 0.93; }
+  54% { opacity: 1; }
+}

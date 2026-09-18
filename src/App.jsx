@@ -75,6 +75,7 @@ function App() {
           setFlags={setFlags}
         />
       )}
+      <div className="crt-overlay"/>
     </div>
   )
 }
