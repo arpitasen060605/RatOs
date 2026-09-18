@@ -12,6 +12,7 @@ import CheeseCatcher from '../games/CheeseCatcher'
 import { AnimatePresence } from 'framer-motion'
 import WanderingRat from './WanderingRat'
 import Taskbar from './Taskbar'
+import AvoidTheCat from '../games/AvoidTheCat'
 
 const apps = [
   { id: "cheese-vault", name: "Cheese Vault", icon: "🧀" },
@@ -23,6 +24,7 @@ const apps = [
   { id: "do-not-click", name: "DO_NOT_CLICK.exe", icon: "⚠️"},
   { id: "achievements", name: "Achievements", icon: "🏆"}, 
   { id: "ratgames", name: "RatGames", icon: "🎮"},
+  { id: "avoid-cat", name: "Avoid The Cat", icon: "🐈"},
 ]
 
 function Desktop({ openWindows, setOpenWindows, flags,setFlags }) {
@@ -130,6 +132,8 @@ function handleStartMenuAppClick(appId) {
   <Achievements flags={flags}/>
 ): win.id === "ratgames" ? (
   <CheeseCatcher/>
+):win.id === "avoid-cat" ?(
+  <AvoidTheCat/>
 ):(  
   `This is the ${app.name} window. Content coming soon.`
 )}
